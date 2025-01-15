@@ -18,7 +18,7 @@ defineProps<{
         By {{ author }} on {{ new Date(date).toLocaleDateString() }}
       </p>
       <p class="card-text">{{ summary }}</p>
-      <router-link :to="'/post/' + id" class="btn btn-primary">Read More</router-link>
+      <router-link :to="'/post/' + title.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-_]/g, '')" class="btn btn-primary">Read More</router-link>
     </div>
   </div>
 </template>

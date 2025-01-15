@@ -1,11 +1,27 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import posts from '../data/posts.json';
+
+let myWindow = window as any;
+
+let postData = JSON.parse(atob(myWindow.asoneData));
+let posts = { posts: postData }
+
+
+
 
 const route = useRoute();
 const post = computed(() => {
-  return posts.posts.find(p => p.id === Number(route.params.id));
+
+  for (var d in posts.posts) {
+        //console.log(this.posts[d])
+        if (posts.posts[d]['title'].replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-_]/g, '') == route.params.id ) {
+          return posts.posts[d]
+        }
+      }
+
+  // @ts-ignore
+  //return posts.posts.find(p => p.id === Number(route.params.id));
 });
 </script>
 

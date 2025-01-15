@@ -1,6 +1,9 @@
 <script setup lang="ts">
+let myWindow = window as any;
 import BlogPost from '../components/BlogPost.vue';
-import posts from '../data/posts.json';
+let postData = JSON.parse(atob(myWindow.asoneData));
+let posts: any = { posts: postData }
+
 </script>
 
 <template>
