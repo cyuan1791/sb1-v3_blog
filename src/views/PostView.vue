@@ -45,8 +45,7 @@ const post = computed(() => {
         <p class="text-muted">
           By {{ post.author }} on {{ new Date(post.date).toLocaleDateString() }}
         </p>
-        <div class="content mt-4">
-          {{ post.content }}
+        <div class="content mt-4" v-html="post.content">
         </div>
       </div>
       <div class="col-12">
